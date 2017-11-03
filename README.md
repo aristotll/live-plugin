@@ -1,8 +1,9 @@
+[![Build Status](https://travis-ci.org/dkandalov/live-plugin.svg?branch=master)](https://travis-ci.org/dkandalov/live-plugin)
+
 ### LivePlugin
 
 This is a plugin for [IntelliJ](https://github.com/JetBrains/intellij-community) IDEs to write plugins at runtime. 
-It uses [Groovy](http://groovy.codehaus.org/) as main language and has experimental support for 
-[Scala](https://github.com/scala/scala) and [Clojure](https://github.com/clojure/clojure).
+It uses [Groovy](http://groovy.codehaus.org/) as main language and has experimental support for [Kotlin](http://kotlinlang.org).
 
 To install search for "liveplugin" in ``IDE Preferences -> Plugins -> Browse Repositories``.
 Alternatively, download [LivePlugin.zip from GitHub](https://raw.github.com/dkandalov/live-plugin/master/LivePlugin.zip)
@@ -68,9 +69,6 @@ registerAction("InsertNewLineAbove", "alt shift ENTER") { AnActionEvent event ->
 show("Loaded 'InsertNewLineAbove' action<br/>Use 'Alt+Shift+Enter' to run it")
 ```
 
-See also [Scala plugin example](https://gist.github.com/dkandalov/5921340), 
-[Clojure plugin example](https://gist.github.com/dkandalov/5943754) and more examples listed below.
-
 
 ### How to start writing plugins
  - open ``Plugins`` tool window
@@ -102,7 +100,7 @@ You can use any internal API and observe/change state of any object inside IDE.
 There are some limitations of course, like ``final`` fields and complex APIs not designed to be re-initialized. 
 
 To simplify usage of IntelliJ API for practical purposes some parts of IntelliJ API are wrapped in 
-[PluginUtil class](https://github.com/dkandalov/live-plugin/blob/master/src_groovy/liveplugin/PluginUtil.groovy).
+[PluginUtil class](https://github.com/dkandalov/live-plugin/blob/master/src/runtime/liveplugin/PluginUtil.groovy).
 This is essentially a layer on top standard IntelliJ API. 
 If you find yourself writing interesting IDE scripts, feel free to create pull request or send a gist
 to include your code into ``PluginUtil``. This is experimental API and there is no intention to keep it minimal.
@@ -129,7 +127,7 @@ Note that you can use ``ctrl+shift+C`` shortcut to copy file/folder path.
  - it helps to be familiar with IntelliJ API
 	 - get and explore [IntelliJ source code](https://github.com/JetBrains/intellij-community)
      - look at [jetbrains plugin development page](http://www.jetbrains.org/intellij/sdk/docs/)
-     - [PluginUtil](https://github.com/dkandalov/live-plugin/blob/master/src_groovy/liveplugin/PluginUtil.groovy)
+     - [PluginUtil](https://github.com/dkandalov/live-plugin/blob/master/src/runtime/liveplugin/PluginUtil.groovy)
        might be a good start point to explore IntelliJ API
  - when plugin seems to be big enough, you can move it to proper plugin project and still use live plugin
  See [liveplugin as an entry point for standard plugins](https://github.com/dkandalov/live-plugin/wiki/Liveplugin-as-an-entry-point-for-standard-plugins).
@@ -146,7 +144,6 @@ Note that you can use ``ctrl+shift+C`` shortcut to copy file/folder path.
  - [Module transitive dependencies](https://gist.github.com/dkandalov/80d8d4f71bef54290a71) - finds all transitive dependencies for modules in IDEA project
  - [Show text diff](https://gist.github.com/dkandalov/6728950) - really lame example of opening IntelliJ text diff window (please don't use it!)
  - [Find all recursive methods in project (for Java)](https://gist.github.com/dkandalov/7248184) - quick plugin as a follow up for this [talk](http://skillsmatter.com/podcast/nosql/using-graphs-for-source-code-analysis)
- - [Find all recursive methods in project (for Scala)](https://gist.github.com/jpsacha/9864e30dc884683bee18) - find all recursive methods in project
  - [Watching projects open/close events](https://gist.github.com/dkandalov/6427087) - an example of reloadable project listener
  - [Minimalistic view for java code](https://gist.github.com/dkandalov/708664109a37c3c0ff15) - collapses most of Java keywords and types leaving only variable names
  - [Symbolize keywords](https://gist.github.com/dkandalov/5553999) - collapses Java keywords into shorter symbols
